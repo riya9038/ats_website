@@ -14,6 +14,7 @@ import {
 } from "antd";
 import { DownOutlined, UserOutlined } from "@ant-design/icons";
 import TableOverview from "./Table";
+import { useNavigate } from "react-router-dom";
 
 const items: MenuProps["items"] = [
   {
@@ -51,8 +52,9 @@ const menuProps = {
 };
 
 const DetailedOverview: React.FC = () => {
+  const navigate = useNavigate();
   return (
-    <div>
+    <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
       <div>Detailed Opportunity Overview</div>
       <Row gutter={32}>
         <Col span={12}>
@@ -85,7 +87,61 @@ const DetailedOverview: React.FC = () => {
       >
         <div style={{ display: "flex", alignItems: "center" }}>
           <Typography.Paragraph>Google</Typography.Paragraph>
+          <UserOutlined onClick={() => navigate("/program")} />
           <UserOutlined />
+        </div>
+        <Row gutter={32}>
+          <Col span={4}>
+            <Card>
+              <Typography>Applied</Typography>
+              <Typography>95</Typography>
+            </Card>
+          </Col>
+          <Col span={4}>
+            <Card>
+              <Typography>Applied</Typography>
+              <Typography>95</Typography>
+            </Card>
+          </Col>
+          <Col span={4}>
+            <Card>
+              <Typography>Applied</Typography>
+              <Typography>95</Typography>
+            </Card>
+          </Col>
+          <Col span={4}>
+            <Card>
+              <Typography>Applied</Typography>
+              <Typography>95</Typography>
+            </Card>
+          </Col>
+          <Col span={4}>
+            <Card>
+              <Typography>Applied</Typography>
+              <Typography>95</Typography>
+            </Card>
+          </Col>
+          <Col span={4}>
+            <Card>
+              <Typography>Applied</Typography>
+              <Typography>95</Typography>
+            </Card>
+          </Col>
+        </Row>
+        <TableOverview />
+      </div>
+      <div
+        style={{
+          backgroundColor: "white",
+          padding: "24px",
+          display: "flex",
+          flexDirection: "column",
+          gap: "34px",
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <Typography.Paragraph>Microsoft</Typography.Paragraph>
+          <UserOutlined onClick={() => navigate("/program")} />
           <UserOutlined />
         </div>
         <Row gutter={32}>

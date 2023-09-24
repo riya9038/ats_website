@@ -68,5 +68,5 @@ button:focus-visible {
   }
 } */
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Poppins", sans-serif !important;
 }

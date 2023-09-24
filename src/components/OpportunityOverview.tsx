@@ -1,41 +1,60 @@
 import React from "react";
-import { Row, Col, Card, Typography } from "antd";
+import { Card, Space } from "antd";
+
 import LineChart from "./LineChart";
+import OverviewCard from "./OverviewCard";
+import CandidateFlow from "./CandidateFlow";
 const OpportunityOverview: React.FC = () => {
   return (
-    <div style={{ height: "533px", marginTop: "32px" }}>
+    <div style={{ height: "auto", marginTop: "32px" }}>
       <div>Opportunity Overview</div>
-      <Row gutter={[16, 16]}>
-        <Col span={4}>
-          <Card>
-            <Typography.Title>Applied</Typography.Title>
-          </Card>
-        </Col>
-        <Col span={4}>
-          <Card>
-            <Typography.Title>Applied</Typography.Title>
-          </Card>
-        </Col>
-        <Col span={4}>
-          <Card>
-            <Typography.Title>Applied</Typography.Title>
-          </Card>
-        </Col>
-        <Col span={12}>
-          <Card></Card>
-        </Col>
-        <Col span={12}>
-          <Card>
-            <LineChart />
-          </Card>
-        </Col>
-        <Col span={6}>
-          <Card></Card>
-        </Col>
-        <Col span={6}>
-          <Card></Card>
-        </Col>
-      </Row>
+      <Space direction="vertical" size={24} style={{ marginRight: "32px" }}>
+        <div style={{ display: "flex", gap: "32px" }}>
+          <OverviewCard
+            name="Applied"
+            stats={3122}
+            change={1590}
+            percent={15}
+            position={"left"}
+          />
+          <OverviewCard
+            name="Offer"
+            stats={183}
+            change={71}
+            percent={15}
+            position={"left"}
+          />
+          <OverviewCard
+            name="Hired"
+            stats={98}
+            change={167}
+            percent={15}
+            position={"left"}
+          />
+        </div>
+        <Card>
+          <LineChart />
+        </Card>
+      </Space>
+      <Space direction={"vertical"} size={24}>
+        <CandidateFlow candidate={4567} percent={78} />
+        <div style={{ display: "flex", gap: "32px" }}>
+          <OverviewCard
+            name="Recommended"
+            stats={2164}
+            change={90}
+            percent={15}
+            position={"right"}
+          />
+          <OverviewCard
+            name="Hired"
+            stats={443}
+            change={90}
+            percent={15}
+            position={"right"}
+          />
+        </div>
+      </Space>
     </div>
   );
 };
