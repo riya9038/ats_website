@@ -9,7 +9,7 @@ const TableFlow: React.FC = () => (
         Table: {
           borderColor: "none",
           padding: 0,
-          paddingContentVerticalLG: 0,
+          paddingContentVerticalLG: 8,
           headerBg: "white",
         },
       },

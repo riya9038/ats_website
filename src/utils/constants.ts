@@ -59,9 +59,14 @@ export const columnsTableOverview: ColumnsType<TableOverviewDataType> = [
     dataIndex: "name",
     key: "name",
     fixed: "left",
-    render: (_, record) => (record.key === "1" ? "UX Internship" : "Marketing"),
-    onCell: (record) => ({
-      rowSpan: record.key === "1" ? 3 : 0,
+    render: (_, record) =>
+      record.dataIndex === 0
+        ? "UX Internship"
+        : record.dataIndex === 3
+        ? "Art Internship"
+        : "UX Internship",
+    onCell: (_, index) => ({
+      rowSpan: index === 0 || index === 3 ? 3 : 0,
     }),
   },
   {
@@ -98,30 +103,116 @@ export const columnsTableOverview: ColumnsType<TableOverviewDataType> = [
 
 export const dataTableOverview: TableOverviewDataType[] = [
   {
+    dataIndex: 0,
     key: "1",
     status: "Active",
-    applied: 27,
-    recommended: 10,
-    interview: 5,
+    applied: 20,
+    recommended: 17,
+    interview: 4,
     offer: 3,
     hired: 1,
   },
   {
+    dataIndex: 1,
     key: "2",
     status: "Disqualified",
-    applied: 27,
-    recommended: 10,
-    interview: 5,
-    offer: 3,
+    applied: 7,
+    recommended: 4,
+    interview: 1,
+    offer: 1,
     hired: 1,
   },
   {
+    dataIndex: 2,
     key: "3",
     status: "Sub Total",
     applied: 27,
-    recommended: 10,
+    recommended: 21,
     interview: 5,
+    offer: 4,
+    hired: 2,
+  },
+  {
+    dataIndex: 3,
+    key: "4",
+    status: "Active",
+    applied: 20,
+    recommended: 17,
+    interview: 4,
     offer: 3,
     hired: 1,
   },
+  {
+    dataIndex: 4,
+    key: "5",
+    status: "Disqualified",
+    applied: 7,
+    recommended: 4,
+    interview: 1,
+    offer: 1,
+    hired: 1,
+  },
+  {
+    dataIndex: 5,
+    key: "6",
+    status: "Sub Total",
+    applied: 27,
+    recommended: 21,
+    interview: 5,
+    offer: 4,
+    hired: 2,
+  },
 ];
+export const options = [
+  {
+    label: "Applied",
+    value: "applied",
+  },
+  {
+    label: "Recommended",
+    value: "recommended",
+  },
+  {
+    label: "Interview",
+    value: "interview",
+  },
+  {
+    label: "Offer",
+    value: "offer",
+  },
+  {
+    label: "Hired",
+    value: "hired",
+  },
+  {
+    label: "Rejected",
+    value: "rejected",
+  },
+];
+
+export const styles = {
+  heading: {
+    fontSize: "20px",
+    fontWeight: 600,
+  },
+  text_light: {
+    fontSize: "12px",
+    fontWeight: 300,
+  },
+  text_regular: {
+    fontSize: "12px",
+    fontWeight: 400,
+  },
+  text_semibold: {
+    fontSize: "15px",
+    fontWeight: 500,
+  },
+  text_bold: {
+    fontSize: "16px",
+    fontWeight: 600,
+  },
+  text_bolder: {
+    fontSize: "15px",
+    fontWeight: 700,
+  },
+};

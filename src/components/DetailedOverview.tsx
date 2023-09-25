@@ -1,79 +1,101 @@
-import React from "react";
-import {
-  Row,
-  Col,
-  Form,
-  Input,
-  Dropdown,
-  Space,
-  Button,
-  MenuProps,
-  message,
-  Typography,
-  Card,
-} from "antd";
-import { DownOutlined, UserOutlined } from "@ant-design/icons";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { useState } from "react";
+import { Row, Col, Form, Input, Button, Typography, Card, Select } from "antd";
 import TableOverview from "./Table";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { dataTableOverview, options, styles } from "../utils/constants";
+import { SortIcon } from "../assets/sort";
+import { DashboardIcon } from "../assets/dashboard";
+import { DownloadIcon } from "../assets/download";
+// import { ReactComponent as ReactIcon } from "../assets/react.svg";
 
-const items: MenuProps["items"] = [
-  {
-    label: "1st menu item",
-    key: "1",
-    icon: <UserOutlined />,
-  },
-  {
-    label: "2nd menu item",
-    key: "2",
-    icon: <UserOutlined />,
-  },
-  {
-    label: "3rd menu item",
-    key: "3",
-    icon: <UserOutlined />,
-    danger: true,
-  },
-  {
-    label: "4rd menu item",
-    key: "4",
-    icon: <UserOutlined />,
-    danger: true,
-    disabled: true,
-  },
-];
-const handleMenuClick: MenuProps["onClick"] = (e) => {
-  message.info("Click on menu item.");
-  console.log("click", e);
+const CardOverview = ({ name, count }: any) => {
+  return (
+    <Col span={4}>
+      <Card
+        style={{
+          textAlign: "center",
+          display: "flex",
+          flexDirection: "column",
+          gap: "8px",
+        }}
+      >
+        <Typography style={styles.text_light}>{name}</Typography>
+        <Typography style={styles.text_semibold}>{count}</Typography>
+      </Card>
+    </Col>
+  );
 };
-
-const menuProps = {
-  items,
-  onClick: handleMenuClick,
-};
-
 const DetailedOverview: React.FC = () => {
-  const navigate = useNavigate();
+  const [dataSource, setDataSource] = useState(dataTableOverview);
+  const [selectedValue, setselectedValue] = useState("");
+  const [sortOrder, setsortOrder] = useState("ascend");
+
+  const handleChange = (value: string) => {
+    setselectedValue(value);
+    const sortedData = dataTableOverview.sort(
+      (a: any, b: any) => a[value] - b[value]
+    );
+    setDataSource([...sortedData]);
+  };
+
+  const handleClick = (e: any) => {
+    e.stopPropagation();
+    if (sortOrder === "ascend") setsortOrder("descend");
+    else setsortOrder("ascend");
+    const sortedData = dataTableOverview.sort((a: any, b: any) =>
+      sortOrder === "ascend"
+        ? a[selectedValue] - b[selectedValue]
+        : b[selectedValue] - a[selectedValue]
+    );
+    setDataSource([...sortedData]);
+  };
+
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-      <div>Detailed Opportunity Overview</div>
+      <div style={{ ...styles.text_bold }}>Detailed Opportunity Overview</div>
       <Row gutter={32}>
-        <Col span={12}>
-          <Form.Item label="Field A">
-            <Input placeholder="input placeholder" />
+        <Col>
+          <Form.Item>
+            <Input
+              placeholder="Search by employer name"
+              style={{ width: "720px", height: "48px", borderRadius: "8px" }}
+            />
           </Form.Item>
         </Col>
-        <Col span={6}>
-          <Dropdown menu={menuProps}>
-            <Button>
-              <Space>
-                Sort by
-                <DownOutlined />
-              </Space>
+        <Col>
+          <div style={{ position: "relative" }}>
+            <Select
+              style={{ width: "253px", height: "48px" }}
+              defaultValue="Sort by"
+              onChange={handleChange}
+              options={options}
+            />
+            <Button
+              onClick={handleClick}
+              style={{
+                position: "absolute",
+                right: "2px",
+                height: "48px",
+              }}
+            >
+              {" "}
+              <SortIcon />
             </Button>
-          </Dropdown>
+          </div>
         </Col>
-        <Col span={6}>
-          <Button>Export All CSVs</Button>
+        <Col>
+          <Button
+            style={{
+              width: "253px",
+              height: "48px",
+              fontSize: "14px",
+              fontWeight: 600,
+              color: "#0557E5",
+            }}
+          >
+            Export All CSVs
+          </Button>
         </Col>
       </Row>
       <div
@@ -85,50 +107,37 @@ const DetailedOverview: React.FC = () => {
           gap: "34px",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <Typography.Paragraph>Google</Typography.Paragraph>
-          <UserOutlined onClick={() => navigate("/program")} />
-          <UserOutlined />
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            height: "40px",
+          }}
+        >
+          <Typography style={{ ...styles.text_semibold, fontSize: "14px" }}>
+            Google
+          </Typography>
+          <div style={{ display: "flex", gap: "8px" }}>
+            <Link to="/program">
+              <Button style={{ width: "40px", height: "40px", padding: "8px" }}>
+                <DashboardIcon />
+              </Button>
+            </Link>
+            <Button style={{ width: "40px", height: "40px", padding: "8px" }}>
+              <DownloadIcon />
+            </Button>
+          </div>
         </div>
         <Row gutter={32}>
-          <Col span={4}>
-            <Card>
-              <Typography>Applied</Typography>
-              <Typography>95</Typography>
-            </Card>
-          </Col>
-          <Col span={4}>
-            <Card>
-              <Typography>Applied</Typography>
-              <Typography>95</Typography>
-            </Card>
-          </Col>
-          <Col span={4}>
-            <Card>
-              <Typography>Applied</Typography>
-              <Typography>95</Typography>
-            </Card>
-          </Col>
-          <Col span={4}>
-            <Card>
-              <Typography>Applied</Typography>
-              <Typography>95</Typography>
-            </Card>
-          </Col>
-          <Col span={4}>
-            <Card>
-              <Typography>Applied</Typography>
-              <Typography>95</Typography>
-            </Card>
-          </Col>
-          <Col span={4}>
-            <Card>
-              <Typography>Applied</Typography>
-              <Typography>95</Typography>
-            </Card>
-          </Col>
+          <CardOverview name="Applied" count={95} />
+          <CardOverview name="Recommended" count={57} />
+          <CardOverview name="Interview" count={39} />
+          <CardOverview name="Offer" count={33} />
+          <CardOverview name="Hired" count={15} />
+          <CardOverview name="Total Rejected" count={60} />
         </Row>
-        <TableOverview />
+        <TableOverview dataSource={dataSource} />
       </div>
       <div
         style={{
@@ -139,50 +148,36 @@ const DetailedOverview: React.FC = () => {
           gap: "34px",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <Typography.Paragraph>Microsoft</Typography.Paragraph>
-          <UserOutlined onClick={() => navigate("/program")} />
-          <UserOutlined />
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <Typography style={{ ...styles.text_semibold, fontSize: "14px" }}>
+            Microsoft
+          </Typography>
+          <div style={{ display: "flex", gap: "8px" }}>
+            <Link to="/program">
+              <Button style={{ width: "40px", height: "40px", padding: "8px" }}>
+                <DashboardIcon />
+              </Button>
+            </Link>
+            <Button style={{ width: "40px", height: "40px", padding: "8px" }}>
+              <DownloadIcon />
+            </Button>
+          </div>
         </div>
         <Row gutter={32}>
-          <Col span={4}>
-            <Card>
-              <Typography>Applied</Typography>
-              <Typography>95</Typography>
-            </Card>
-          </Col>
-          <Col span={4}>
-            <Card>
-              <Typography>Applied</Typography>
-              <Typography>95</Typography>
-            </Card>
-          </Col>
-          <Col span={4}>
-            <Card>
-              <Typography>Applied</Typography>
-              <Typography>95</Typography>
-            </Card>
-          </Col>
-          <Col span={4}>
-            <Card>
-              <Typography>Applied</Typography>
-              <Typography>95</Typography>
-            </Card>
-          </Col>
-          <Col span={4}>
-            <Card>
-              <Typography>Applied</Typography>
-              <Typography>95</Typography>
-            </Card>
-          </Col>
-          <Col span={4}>
-            <Card>
-              <Typography>Applied</Typography>
-              <Typography>95</Typography>
-            </Card>
-          </Col>
+          <CardOverview name="Applied" count={95} />
+          <CardOverview name="Recommended" count={57} />
+          <CardOverview name="Interview" count={39} />
+          <CardOverview name="Offer" count={33} />
+          <CardOverview name="Hired" count={15} />
+          <CardOverview name="Total Rejected" count={60} />
         </Row>
-        <TableOverview />
+        <TableOverview dataSource={dataSource} />
       </div>
     </div>
   );

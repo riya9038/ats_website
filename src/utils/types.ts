@@ -6,6 +6,7 @@ export interface TableFlowDataType {
 }
 
 export interface TableOverviewDataType {
+  dataIndex: number;
   key: string;
   applied: number;
   status: string;
@@ -26,4 +27,6 @@ export interface OverviewDataType {
   change?: number;
   percent?: number;
   position: string;
+  direction: string;
+  width?: string;
 }
