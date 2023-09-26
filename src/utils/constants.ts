@@ -163,6 +163,16 @@ export const dataTableOverview: TableOverviewDataType[] = [
     hired: 2,
   },
 ];
+export const headerOptions = [
+  {
+    label: "London Internship Program",
+    value: "London Internship Program",
+  },
+  {
+    label: "Berlin Internship Program",
+    value: "Berlin Internship Program",
+  },
+];
 export const options = [
   {
     label: "Applied",

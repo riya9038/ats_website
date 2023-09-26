@@ -15,6 +15,9 @@ const TableOverview: React.FC<any> = ({ dataSource }: any) => {
       dataSource={sortedData}
       pagination={false}
       bordered
+      rowClassName={(record, index) =>
+        record.status === "Sub Total" ? "table-row-dark" : ""
+      }
     />
   );
 };

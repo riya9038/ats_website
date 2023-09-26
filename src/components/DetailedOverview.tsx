@@ -7,7 +7,7 @@ import { dataTableOverview, options, styles } from "../utils/constants";
 import { SortIcon } from "../assets/sort";
 import { DashboardIcon } from "../assets/dashboard";
 import { DownloadIcon } from "../assets/download";
-// import { ReactComponent as ReactIcon } from "../assets/react.svg";
+import { ExclamationCircleOutlined, SearchOutlined } from "@ant-design/icons";
 
 const CardOverview = ({ name, count }: any) => {
   return (
@@ -26,17 +26,13 @@ const CardOverview = ({ name, count }: any) => {
     </Col>
   );
 };
-const DetailedOverview: React.FC = () => {
+const DetailedOverview: React.FC<boolean> = ({ collapsed }: boolean) => {
   const [dataSource, setDataSource] = useState(dataTableOverview);
   const [selectedValue, setselectedValue] = useState("");
   const [sortOrder, setsortOrder] = useState("ascend");
 
   const handleChange = (value: string) => {
     setselectedValue(value);
-    const sortedData = dataTableOverview.sort(
-      (a: any, b: any) => a[value] - b[value]
-    );
-    setDataSource([...sortedData]);
   };
 
   const handleClick = (e: any) => {
@@ -52,18 +48,53 @@ const DetailedOverview: React.FC = () => {
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "24px",
+        paddingInline: "24px",
+      }}
+    >
       <div style={{ ...styles.text_bold }}>Detailed Opportunity Overview</div>
-      <Row gutter={32}>
-        <Col>
-          <Form.Item>
-            <Input
-              placeholder="Search by employer name"
-              style={{ width: "720px", height: "48px", borderRadius: "8px" }}
-            />
-          </Form.Item>
-        </Col>
-        <Col>
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <Form.Item>
+          <Input
+            placeholder="Search by employer name"
+            style={{
+              width: collapsed ? "720px" : "640px",
+              height: "48px",
+              borderRadius: "8px",
+              position: "relative",
+              paddingLeft: "35px",
+            }}
+          />
+          <SearchOutlined
+            style={{
+              position: "absolute",
+              left: "15px",
+              top: "35%",
+              marginRight: "10px",
+              opacity: 0.5,
+            }}
+          />
+          <ExclamationCircleOutlined
+            style={{
+              position: "absolute",
+              right: "16px",
+              top: "35%",
+              opacity: 0.5,
+            }}
+          />
+        </Form.Item>
+
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            gap: "32px",
+          }}
+        >
           <div style={{ position: "relative" }}>
             <Select
               style={{ width: "253px", height: "48px" }}
@@ -75,16 +106,17 @@ const DetailedOverview: React.FC = () => {
               onClick={handleClick}
               style={{
                 position: "absolute",
-                right: "2px",
+                right: "0px",
                 height: "48px",
+                paddingTop: "10px",
+                transform: sortOrder === "descend" ? "rotate(180deg)" : "",
               }}
             >
               {" "}
               <SortIcon />
             </Button>
           </div>
-        </Col>
-        <Col>
+
           <Button
             style={{
               width: "253px",
@@ -96,8 +128,8 @@ const DetailedOverview: React.FC = () => {
           >
             Export All CSVs
           </Button>
-        </Col>
-      </Row>
+        </div>
+      </div>
       <div
         style={{
           backgroundColor: "white",

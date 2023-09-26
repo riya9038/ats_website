@@ -105,8 +105,8 @@ const AppLayout: React.FC = () => {
               gap: "32px",
             }}
           >
-            <OpportunityOverview />
-            <DetailedOverview />
+            <OpportunityOverview collapsed={collapsed} />
+            <DetailedOverview collapsed={collapsed} />
           </Content>
         </Layout>
       </Layout>

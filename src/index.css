@@ -4,3 +4,7 @@
 .ant-layout-sider-children {
   background-color: white;
 }
+.table-row-dark {
+  background-color: #fafafa;
+  font-weight: 900;
+}
