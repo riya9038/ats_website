@@ -10,7 +10,7 @@ import {
   HeartOutlined,
 } from "@ant-design/icons";
 import type { MenuProps } from "antd";
-import { Layout, Menu, theme, ConfigProvider } from "antd";
+import { Layout, Menu, ConfigProvider } from "antd";
 import ProgramOverview from "./ProgramOverview";
 
 const { Content, Sider } = Layout;
@@ -68,9 +68,6 @@ const items: MenuItem[] = [
 
 const ProgramLayout: React.FC = () => {
   const [collapsed, setCollapsed] = useState(true);
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
 
   return (
     <ConfigProvider

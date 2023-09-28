@@ -1,6 +1,5 @@
 import React from "react";
 import { Card, Typography, Tag, Space } from "antd";
-import { UserOutlined } from "@ant-design/icons";
 import { OverviewDataType } from "../utils/types";
 import { styles } from "../utils/constants";
 import { Trending_UpIcon } from "../assets/trending_up";

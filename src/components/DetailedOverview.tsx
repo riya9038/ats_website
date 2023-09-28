@@ -26,7 +26,7 @@ const CardOverview = ({ name, count }: any) => {
     </Col>
   );
 };
-const DetailedOverview: React.FC<boolean> = ({ collapsed }: boolean) => {
+const DetailedOverview: React.FC<any> = ({ collapsed }: any) => {
   const [dataSource, setDataSource] = useState(dataTableOverview);
   const [selectedValue, setselectedValue] = useState("");
   const [sortOrder, setsortOrder] = useState("ascend");

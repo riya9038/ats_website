@@ -1,16 +1,17 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import { Card, Space, Typography, Select, DatePicker } from "antd";
 const { RangePicker } = DatePicker;
 import LineChart from "./LineChart";
 import OverviewCard from "./OverviewCard";
 import CandidateFlow from "./CandidateFlow";
-import { headerOptions, options, styles } from "../utils/constants";
+import { headerOptions, styles } from "../utils/constants";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 dayjs.extend(customParseFormat);
 const dateFormat = "YYYY/MM/DD";
 
-const OpportunityOverview: React.FC<boolean> = ({ collapsed }: boolean) => {
+const OpportunityOverview: React.FC<any> = ({ collapsed }: any) => {
   const handleChange = (value: string) => {
     console.log(value);
   };

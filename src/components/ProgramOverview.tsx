@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import { Card, Space, Typography, DatePicker, Select } from "antd";
 import { headerOptions, styles } from "../utils/constants";
@@ -10,7 +11,7 @@ dayjs.extend(customParseFormat);
 const dateFormat = "YYYY/MM/DD";
 const { RangePicker } = DatePicker;
 
-const ProgramOverview: React.FC<boolean> = ({ collapsed }: boolean) => {
+const ProgramOverview: React.FC<any> = ({ collapsed }: any) => {
   const handleChange = (value: string) => {
     console.log(value);
   };

@@ -9,7 +9,7 @@ export interface TableOverviewDataType {
   dataIndex: number;
   key: string;
   applied: number;
-  status: string[];
+  status: string;
   recommended: number;
   offer: number;
   interview: number;
