@@ -4,21 +4,21 @@ This project is a User Interface that represents the application details, status
 
 # Features
 
-- Landing Page/
-- User Interface showing progress of candidates/
-- Line Chart to compare between qualified and disqualified candidates/
-- Table representing status of applications for different organisations/
-- Navigation to detailed overview of each organisation/
+- Landing Page
+- User Interface showing progress of candidates
+- Line Chart to compare between qualified and disqualified candidates
+- Table representing status of applications for different organisations
+- Navigation to detailed overview of each organisation
 
 # Tech Stack and Libraries
 
-- React/
-- Typescript/
-- Vite/
-- Ant Design System/
-- React Charts/
-- React Router Dom/
-- Google Fonts/
+- React
+- Typescript
+- Vite
+- Ant Design System
+- React Charts
+- React Router Dom
+- Google Fonts
 
 # Deployed Link
 `https://ats-web-app.netlify.app/`
