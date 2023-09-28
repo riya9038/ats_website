@@ -33,7 +33,7 @@ function getItem(
 }
 
 const items: MenuItem[] = [
-  getItem("Option 1", "1", <HomeOutlined />),
+  getItem("Home", "1", <HomeOutlined />),
   getItem("Team", "sub1", <TeamOutlined />, [
     getItem("Tom", "3"),
     getItem("Bill", "4"),
@@ -86,6 +86,7 @@ const AppLayout: React.FC = () => {
           collapsible
           collapsed={collapsed}
           onCollapse={(value) => setCollapsed(value)}
+          style={{ height: "50vh" }}
         >
           <div className="demo-logo-vertical" />
           <Menu

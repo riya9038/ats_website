@@ -4,6 +4,7 @@ import { UserOutlined } from "@ant-design/icons";
 import { OverviewDataType } from "../utils/types";
 import { styles } from "../utils/constants";
 import { Trending_UpIcon } from "../assets/trending_up";
+import { Trending_DownIcon } from "../assets/trending_down";
 
 const OverviewCard: React.FC<OverviewDataType> = ({
   name,
@@ -16,13 +17,14 @@ const OverviewCard: React.FC<OverviewDataType> = ({
 }: OverviewDataType) => {
   return (
     <Card style={{ width: width, height: "auto", padding: "0px 8px" }}>
-      <Space direction="vertical">
+      <Space direction="vertical" style={{ width: "100%" }}>
         <div
           style={{
             display: "flex",
             flexDirection: position === "left" ? "column" : "row",
             gap: "16px",
             alignItems: position === "left" ? "flex-start" : "center",
+            justifyContent: position === "right" ? "space-between" : "",
           }}
         >
           <Typography style={styles.text_semibold}>{name}</Typography>
@@ -38,10 +40,24 @@ const OverviewCard: React.FC<OverviewDataType> = ({
         </div>
         <div>
           <Typography style={styles.text_regular}>Previous Period</Typography>
-          <div style={{ display: "flex" }}>
+          <div style={{ display: "flex", gap: "8px" }}>
             <Typography style={styles.text_light}>{change}</Typography>{" "}
             <Tag
-              icon={<img src="../assets/trending_up.tsx" />}
+              icon={
+                <div
+                  style={{
+                    width: "20px",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  {direction === "down" ? (
+                    <Trending_DownIcon />
+                  ) : (
+                    <Trending_UpIcon />
+                  )}
+                </div>
+              }
               color={direction === "up" ? "#F0F6FF" : "#FFF3F0"}
               style={{
                 ...styles.text_light,
@@ -51,6 +67,8 @@ const OverviewCard: React.FC<OverviewDataType> = ({
                 color: "black",
                 display: "flex",
                 gap: "4px",
+                justifyContent: "center",
+                padding: "0px 24px",
               }}
             >
               {percent}%

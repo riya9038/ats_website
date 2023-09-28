@@ -1,6 +1,5 @@
 import { TableFlowDataType, TableOverviewDataType } from "./types";
 import type { ColumnsType } from "antd/es/table";
-// import { Tag } from "antd";
 
 export const columnsTableFlow: ColumnsType<TableFlowDataType> = [
   {
@@ -105,7 +104,7 @@ export const dataTableOverview: TableOverviewDataType[] = [
   {
     dataIndex: 0,
     key: "1",
-    status: "Active",
+    status: ["Active"],
     applied: 20,
     recommended: 17,
     interview: 4,
@@ -115,7 +114,7 @@ export const dataTableOverview: TableOverviewDataType[] = [
   {
     dataIndex: 1,
     key: "2",
-    status: "Disqualified",
+    status: ["Disqualified"],
     applied: 7,
     recommended: 4,
     interview: 1,
@@ -125,7 +124,7 @@ export const dataTableOverview: TableOverviewDataType[] = [
   {
     dataIndex: 2,
     key: "3",
-    status: "Sub Total",
+    status: ["Sub Total"],
     applied: 27,
     recommended: 21,
     interview: 5,
@@ -135,7 +134,7 @@ export const dataTableOverview: TableOverviewDataType[] = [
   {
     dataIndex: 3,
     key: "4",
-    status: "Active",
+    status: ["Active"],
     applied: 20,
     recommended: 17,
     interview: 4,
@@ -145,7 +144,7 @@ export const dataTableOverview: TableOverviewDataType[] = [
   {
     dataIndex: 4,
     key: "5",
-    status: "Disqualified",
+    status: ["Disqualified"],
     applied: 7,
     recommended: 4,
     interview: 1,
@@ -155,7 +154,7 @@ export const dataTableOverview: TableOverviewDataType[] = [
   {
     dataIndex: 5,
     key: "6",
-    status: "Sub Total",
+    status: ["Sub Total"],
     applied: 27,
     recommended: 21,
     interview: 5,

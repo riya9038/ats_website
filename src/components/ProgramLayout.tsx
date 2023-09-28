@@ -32,7 +32,7 @@ function getItem(
 }
 
 const items: MenuItem[] = [
-  getItem("Option 1", "1", <HomeOutlined />),
+  getItem("Home", "1", <HomeOutlined />),
   getItem("Team", "sub1", <TeamOutlined />, [
     getItem("Tom", "3"),
     getItem("Bill", "4"),
