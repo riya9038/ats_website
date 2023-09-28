@@ -9,6 +9,7 @@ This project is a User Interface that represents the application details, status
 - Line Chart to compare between qualified and disqualified candidates
 - Table representing status of applications for different organisations
 - Navigation to detailed overview of each organisation
+- Deployment using Netlify
 
 # Tech Stack and Libraries
 
