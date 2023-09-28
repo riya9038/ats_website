@@ -1,27 +1,24 @@
-# React + TypeScript + Vite
+# Applicant Tracking System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a User Interface that represents the application details, status, candidates hired or rejected with the help of charts and tables. The data is static and the charts are dynamically built using React-charts.
 
-Currently, two official plugins are available:
+# Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Landing Page/
+- User Interface showing progress of candidates/
+- Line Chart to compare between qualified and disqualified candidates/
+- Table representing status of applications for different organisations/
+- Navigation to detailed overview of each organisation/
 
-## Expanding the ESLint configuration
+# Tech Stack and Libraries
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- React/
+- Typescript/
+- Vite/
+- Ant Design System/
+- React Charts/
+- React Router Dom/
+- Google Fonts/
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+# Deployed Link
+`https://ats-web-app.netlify.app/`
